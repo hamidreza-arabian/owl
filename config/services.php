@@ -31,4 +31,11 @@ return [
         ],
     ],
 
+    'sourceIrena' => [
+        'key' => [
+          1 => env('SOURCEIRENA_API_KEY_1'),
+          2 => env('SOURCEIRENA_API_KEY_2'),
+        ],
+    ],
+
 ];

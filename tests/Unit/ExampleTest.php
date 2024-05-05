@@ -2,7 +2,8 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+use Illuminate\Support\Facades\Config;
+use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {

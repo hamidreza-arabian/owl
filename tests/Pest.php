@@ -1,6 +1,8 @@
 <?php
 
 /*
+ *
+ *
 |--------------------------------------------------------------------------
 | Test Case
 |--------------------------------------------------------------------------
@@ -14,7 +16,7 @@
 uses(
     Tests\TestCase::class,
     // Illuminate\Foundation\Testing\RefreshDatabase::class,
-)->in('Feature');
+)->in('Feature','Unit');
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +29,7 @@ uses(
 |
 */
 
-expect()->extend('toBeOne', function () {
+expect()->extend('toBeOne1', function () {
     return $this->toBe(1);
 });
 
