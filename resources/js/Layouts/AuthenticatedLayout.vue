@@ -35,7 +35,7 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('profile.edit')" :active="route().current('profile.edit')">
                                     پروفایل
                                 </NavLink>
-                                <NavLink :href="route('stock.index')" :active="route().current('stock.index')">
+                                <NavLink :href="route('watch.index')" :active="route().current('watch.index')">
                                     سهام های تحت نظر
                                 </NavLink>
                             </div>

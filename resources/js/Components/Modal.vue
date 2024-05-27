@@ -14,6 +14,19 @@ const props = defineProps({
         type: Boolean,
         default: true,
     },
+    position: {
+        type: String,
+        default: 'top',
+    }
+});
+
+const modalPositionClasses = computed(() => {
+   switch (props.position){
+       case 'top':
+           return 'mb-6';
+       case 'middle':
+           return 'absolute right-1/2 top-1/2 translate-x-1/2 -translate-y-1/2'
+   }
 });
 
 const emit = defineEmits(['close']);
@@ -28,6 +41,10 @@ watch(
         }
     }
 );
+
+
+
+
 
 const close = () => {
     if (props.closeable) {
@@ -86,8 +103,8 @@ const maxWidthClass = computed(() => {
                 >
                     <div
                         v-show="show"
-                        class="mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto"
-                        :class="maxWidthClass"
+                        class="  bg-white test rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto"
+                        :class="[maxWidthClass, modalPositionClasses]"
                     >
                         <slot v-if="show" />
                     </div>
