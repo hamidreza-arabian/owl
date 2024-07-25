@@ -1,8 +1,11 @@
 <?php
+
+use App\Models\stock;
+use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
 
-beforeEach(function (){
-    $this->user =\App\Models\User::factory()->create();
+beforeEach(function () {
+    $this->user = User::factory()->create();
 });
 test('watch stock page can be render', function () {
     $response = $this
@@ -12,21 +15,23 @@ test('watch stock page can be render', function () {
 
 });
 
-test('if user has no stock to watch, stocks should be null', function () {
+test('if user has no stock to watch, watchList should be empty ', function () {
     $response = $this
         ->actingAs($this->user)
         ->get('/سهام-های-تحت-نظر');
     $response->assertInertia(fn (Assert $page) => $page
-        ->component('StockWatch/Index')
-        ->has('stocks', null)
+        ->component('WatchList/Index')
+        ->has('watchList', 0)
     );
 });
-test('if user has stock to watch, stocks should not be null', function () {
+test('if user has stock to watch, watchList should not be null', function () {
+    $stock = Stock::factory()->create();
+    $this->user->addWatchList($stock, ['price' => 1200, 'title' => 'حد ضرر']);
     $response = $this
         ->actingAs($this->user)
         ->get('/سهام-های-تحت-نظر');
     $response->assertInertia(fn (Assert $page) => $page
         ->component('StockWatch/Index')
-        ->has('stocks',)
+        ->has('watchList', 1)
     );
 });
