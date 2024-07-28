@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, onUnmounted, watch } from 'vue';
+import {computed, onMounted, onUnmounted, watch} from 'vue';
 
 const props = defineProps({
     show: {
@@ -21,12 +21,12 @@ const props = defineProps({
 });
 
 const modalPositionClasses = computed(() => {
-   switch (props.position){
-       case 'top':
-           return 'mb-6';
-       case 'middle':
-           return 'absolute right-1/2 top-1/2 translate-x-1/2 -translate-y-1/2'
-   }
+    switch (props.position) {
+        case 'top':
+            return 'mb-6';
+        case 'middle':
+            return 'absolute right-1/2 top-1/2 translate-x-1/2 -translate-y-1/2'
+    }
 });
 
 const emit = defineEmits(['close']);
@@ -41,9 +41,6 @@ watch(
         }
     }
 );
-
-
-
 
 
 const close = () => {
@@ -88,8 +85,8 @@ const maxWidthClass = computed(() => {
                     leave-from-class="opacity-100"
                     leave-to-class="opacity-0"
                 >
-                    <div v-show="show" class="fixed inset-0 transform transition-all" @click="close">
-                        <div class="absolute inset-0 bg-gray-500 opacity-75" />
+                    <div v-show="show" data-test="amo" class="fixed inset-0 transform transition-all" @click="close">
+                        <div class="absolute inset-0 bg-gray-500 opacity-75"/>
                     </div>
                 </Transition>
 
@@ -103,10 +100,10 @@ const maxWidthClass = computed(() => {
                 >
                     <div
                         v-show="show"
-                        class="  bg-white test rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto"
                         :class="[maxWidthClass, modalPositionClasses]"
+                        class="min-w-[80%] md:min-w-[41rem] bg-white rounded-lg overflow-hidden shadow-xl transform transition-all  sm:mx-auto"
                     >
-                        <slot v-if="show" />
+                        <slot v-if="show"/>
                     </div>
                 </Transition>
             </div>

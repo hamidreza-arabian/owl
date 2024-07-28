@@ -12,6 +12,7 @@ class AuthenticationTest extends TestCase
 
     public function test_login_screen_can_be_rendered(): void
     {
+
         $response = $this->get('/login');
 
         $response->assertStatus(200);
@@ -27,7 +28,7 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(route('dashboard', absolute: false));
+        $response->assertRedirect(route('watch.index', absolute: false));
     }
 
     public function test_users_can_not_authenticate_with_invalid_password(): void

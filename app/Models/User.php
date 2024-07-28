@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -32,6 +33,17 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function addWatchList(stock $stock, array $details): void
+    {
+
+        $this->watchLists()->attach($stock->id, $details);
+    }
+
+    public function watchLists(): BelongsToMany
+    {
+        return $this->belongsToMany(stock::class, 'watch_list');
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -44,6 +56,4 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-
 }

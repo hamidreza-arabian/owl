@@ -17,14 +17,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('plan',[
-                'بدون پلن',
-                'پلن نامحدود'
-            ]);
-            $table->date('plan_start_date');
-            $table->string('plan_start_date_shamsi');
-            $table->date('plan_finish_date');
-            $table->string('plan_finish_date_shamsi');
             $table->rememberToken();
             $table->timestamps();
         });
