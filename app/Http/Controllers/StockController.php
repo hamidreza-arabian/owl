@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\stock;
 use Illuminate\Http\Request;
 
 class StockController extends Controller
@@ -59,5 +60,10 @@ class StockController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function getStock(Request $request){
+        $stocks = $request->stock ? stock::getStocks($request) : null;
+        return response()->json($stocks);
     }
 }

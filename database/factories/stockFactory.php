@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\stock;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
 class stockFactory extends Factory
 {
@@ -13,8 +14,8 @@ class stockFactory extends Factory
     public function definition(): array
     {
         return [
-            'symbol' => fake()->unique()->word(),
-            'company' => $this->faker->unique()->word(),
+            'symbol' => $this->faker->word . Str::random(5),
+            'company' => $this->faker->word . Str::random(5),
             'market' => $this->faker->randomElement(stock::$market),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

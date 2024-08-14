@@ -12,13 +12,8 @@ class WatchListController extends Controller
     {
 
         return Inertia::render('WatchList/Index', [
-            'stocks' => $request->stock ?
-                stock::query()
-                    ->where('symbol', 'like', "%$request->stock%")
-                    ->orWhere('company', 'like', "%$request->stock%")
-                    ->take(30)
-                    ->get() : null,
-            'watchList' => $request->user()->watchLists,
+            'stocks' => Inertia::lazy(fn() => $request->stock ? stock::getStocks($request) : null),
+            'watchList' => fn() => $request->user()->watchLists,
         ]);
 
     }

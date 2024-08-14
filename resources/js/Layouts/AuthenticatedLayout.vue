@@ -151,11 +151,11 @@ const showingNavigationDropdown = ref(false);
 
             <!-- Hidden Search -->
             <div class="md:hidden h-14  relative">
-                <slot name="hidden_search" />
+                  <slot name="hidden_search" />
 
             </div>
 
-            <!-- Page Content -->
+
             <main>
                 <slot />
             </main>

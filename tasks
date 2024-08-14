@@ -1,0 +1,17 @@
+1- refactoring
+2- read filters from url(stock search filter)
+3- remove queryString(stock) when it's empty
+4- desktop and mobile input are decouple i should mix them to one component
+5- write tests
+
+
+check for stop propg
+
+
+
+
+Call the given Closure / class
+Parameters:
+callable|string $callback array<string, mixed> $parameters null|string $defaultMethod
+Returns:
+mixed 

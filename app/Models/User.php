@@ -35,12 +35,12 @@ class User extends Authenticatable
 
     public function addWatchList(stock $stock, array $details): void
     {
-
         $this->watchLists()->attach($stock->id, $details);
     }
 
     public function watchLists(): BelongsToMany
     {
+        logger("watch list");
         return $this->belongsToMany(stock::class, 'watch_list');
     }
 
